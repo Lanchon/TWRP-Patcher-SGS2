@@ -130,7 +130,7 @@ patch() {
     fi
     "patch_$device"
     if [ -n "$crossflash" ]; then
-        sed -i 's/ro\.build\.product=lanchon-magic/ro\.build\.product=GT-I9100/g' default.prop
+        sed -i 's/ro\.build\.product=lanchon-magic/ro\.build\.product=i9100/g' default.prop
     fi
 
 }
