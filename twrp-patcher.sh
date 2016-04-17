@@ -132,7 +132,8 @@ patch_d710() {
     sed -i 's/GT-I9100/SPH-D710/g' default.prop
     sed -i 's/i9100/d710/g' default.prop
 
-    sed -i 's|/devices/platform/s3c-sdhci.2/mmc_host/mmc1|/devices/virtual/block/cyasblkdevblk0|g' fstab.smdk4210 etc/recovery.fstab
+    #sed -i 's|/devices/platform/s3c-sdhci.2/mmc_host/mmc1|/devices/virtual/block/cyasblkdevblk0|g' fstab.smdk4210 etc/recovery.fstab
+    sed -i 's|/dev/block/mmcblk1|/dev/block/cyasblkdevblk0|g' etc/twrp.fstab
 
 }
 
