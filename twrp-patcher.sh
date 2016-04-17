@@ -170,12 +170,15 @@ main() {
     rm -f $tcpio
     rm -rf $tdir
 
-    info "decompressing recovery"
+    echo "processing currently installed recovery..."
+    echo
+
+    info "decompressing"
     if ! lzop -d <$dev >$tcpio; then
         fatal "IsoRec recovery not found"
     fi
 
-    info "unpacking recovery"
+    info "unpacking"
     mkdir -p $tdir
     cd $tdir
     if ! cpio -i <$tcpio 2>/dev/null; then
@@ -183,10 +186,10 @@ main() {
     fi
     rm $tcpio
 
-    info "patching recovery"
+    info "patching"
     patch
 
-    info "repacking recovery"
+    info "repacking"
     cd $tdir
     if ! find | cpio -o -H newc >$tcpio; then
         fatal "repacking failed"
@@ -194,18 +197,18 @@ main() {
     cd /
     rm -r $tdir
 
-    info "compressing recovery"
+    info "compressing"
     if ! lzop <$tcpio >$tlzo; then
         fatal "compressing failed"
     fi
     rm $tcpio
 
-    info "flashing recovery"
+    info "flashing"
     if ! cat $tlzo >$dev; then
         fatal "flashing failed"
     fi
     rm $tlzo
 
-    info "done"
+    info "success"
 
 }
