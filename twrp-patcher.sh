@@ -182,8 +182,6 @@ main() {
     info "patching recovery"
     patch
 
-xxx
-
     info "repacking recovery"
     cd $tdir
     if ! find | cpio -o -H newc >$tcpio; then
