@@ -98,6 +98,29 @@ checkTools() {
 
 }
 
+printVersion() {
+
+    echo "Version: $version"
+    echo "Source: i9100"
+    echo "Target: $device"
+    echo "Crossflash: $cfstate"
+
+}
+
+checkRepatch() {
+
+    local tagFile=lanchon-twrp-patcher
+
+    if [ -e $tagFile ]; then
+        info "detected previously applied patch, as follows:"
+        echo
+        cat $tagFile
+        fatal "recovery already patched (please flash a clean TWRP before patching again)"
+    fi
+    printVersion >$tagFile
+
+}
+
 ### patching
 
 patch_d710() {
@@ -185,6 +208,9 @@ main() {
         fatal "recovery image is corrupt"
     fi
     rm $tcpio
+
+    info "verifying"
+    checkRepatch
 
     info "patching"
     patch
