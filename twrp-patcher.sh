@@ -34,10 +34,12 @@ info() {
 ### helpers
 
 checkTool() {
+
     #info "checking tool: $1"
     if [ -z "$(which "$1")" ]; then
         fatal "required tool '$1' missing (please use a recent version of TWRP)"
     fi
+
 }
 
 checkDevice() {
@@ -83,10 +85,12 @@ checkDevice() {
 }
 
 checkTwrp() {
+
     #info "checking TWRP"
     if [ ! -e /sbin/twrp ]; then
         fatal "this package requires TWRP"
     fi
+
 }
 
 checkTools() {
