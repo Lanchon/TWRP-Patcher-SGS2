@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+makeScript() {
+
+    local device="$1"
+    local crossflash="$2"
+    local out="$3"
+
+    rm -f "$out"
+
+    >>"$out" cat twrp-patcher.sh
+    >>"$out" echo
+
+    >>"$out" echo "#####################################################"
+    >>"$out" echo
+    >>"$out" printf 'device=%q\n' "$device"
+    >>"$out" printf 'crossflash=%q\n' "$crossflash"
+    >>"$out" echo
+    >>"$out" echo 'main "$@"'
+
+}
+
+makeScript "$@"
