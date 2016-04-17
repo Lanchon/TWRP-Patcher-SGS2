@@ -139,14 +139,18 @@ patch() {
 
 main() {
 
+    if [ -n "$crossflash" ]; then
+        cfstate="Enabled"
+    else
+        cfstate="Disabled"
+    fi
+
     echo " ####################################"
     echo "  Lanchon IsoRec TWRP Patcher"
     echo "  Version: $version"
     echo "  Source: i9100"
     echo "  Target: $device"
-    if [ -n "$crossflash" ]; then
-        echo "  Crossflash Enabled"
-    fi
+    echo "  Crossflash: $cfstate"
     echo "  Copyright 2016, Lanchon (GPLv3)"
     echo " ####################################"
     echo
