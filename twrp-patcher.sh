@@ -207,7 +207,7 @@ main() {
     if ! cat $tlzo >$dev; then
         fatal "flashing failed"
     fi
-    rm $tlzo
+    #rm $tlzo
 
     info "success"
 
